@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jackson Omondi Mula | Software Developer</title>
+<meta name="description" content="Jackson Omondi Mula is a third-year IT student at Kabarak University in Eldoret, Kenya, building web and Android software with React, Node.js, Next.js and Kotlin.">
+<meta property="og:title" content="Jackson Omondi Mula | Software Developer">
+<meta property="og:description" content="Web and Android apps built for real Kenyan problems.">
+<meta property="og:image" content="jackPortfolio.png">
+<meta name="theme-color" content="#F5F8F6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231E6B49'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' text-anchor='middle' fill='white'%3EJM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #F5F8F6;
+    --ink: #0C1A13;
+    --muted: #4A5A51;
+    --line: #D3DDD7;
+    --sage: #9CC9AE;
+    --green: #1E6B49;
+    --green-dark: #154D35;
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "Literata", Georgia, "Times New Roman", serif;
+    --wrap: 1120px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--green); text-underline-offset: 3px; }
+  a:hover { color: var(--green-dark); }
+  :focus-visible { outline: 3px solid var(--green); outline-offset: 3px; border-radius: 2px; }
+
+  .skip {
+    position: absolute; left: -999px; top: 0;
+    background: var(--ink); color: #fff; padding: .6rem 1rem; z-index: 100;
+  }
+  .skip:focus { left: 0; }
+
+  .wrap { width: min(var(--wrap), 100% - 3rem); margin-inline: auto; }
+
+  /* The shirt stripe: used as the page's one recurring motif */
+  .stripes {
+    background: repeating-linear-gradient(90deg, var(--ink) 0 18px, var(--paper) 18px 21px);
+  }
+  .topstripe { height: 8px; }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.site .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 4rem;
+  }
+  .brand {
+    font-family: var(--display); font-weight: 800; font-size: 1.15rem;
+    color: var(--ink); text-decoration: none; letter-spacing: -.01em;
+  }
+  nav ul { display: flex; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
+  nav a {
+    font-family: var(--display); font-weight: 500; font-size: .98rem;
+    color: var(--ink); text-decoration: none;
+    padding-block: .35rem; border-bottom: 2px solid transparent;
+  }
+  nav a:hover { border-bottom-color: var(--green); color: var(--ink); }
+
+  /* Hero */
+  .hero { padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(3.5rem, 8vw, 6rem); }
+  .hero .wrap {
+    display: grid; grid-template-columns: 1.25fr .75fr; gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .hero h1 {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(2.9rem, 7.2vw, 5.6rem);
+    line-height: .98; letter-spacing: -.035em; margin: 0 0 1.5rem;
+  }
+  .role {
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--green);
+    margin: 0 0 1.25rem;
+  }
+  .lede { max-width: 34rem; margin: 0 0 2rem; font-size: 1.15rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .85rem; }
+  .btn {
+    font-family: var(--display); font-weight: 700; font-size: 1rem;
+    padding: .85rem 1.5rem; border-radius: 6px; text-decoration: none;
+    border: 2px solid var(--ink); display: inline-block;
+  }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn.primary:hover { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--paper); }
+
+  .portrait { position: relative; justify-self: end; width: min(100%, 380px); }
+  .portrait .band {
+    position: absolute; inset: 1.4rem -1.4rem -1.4rem 1.4rem;
+    border-radius: 4px;
+    animation: rise 1.1s cubic-bezier(.2,.7,.2,1) .15s both;
+  }
+  .portrait img {
+    position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top;
+    border-radius: 4px; border: 3px solid var(--ink); background: var(--sage);
+  }
+  @keyframes rise {
+    from { clip-path: inset(100% 0 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+  }
+
+  .facts {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    padding-top: 1.5rem; border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem 2rem;
+  }
+  .facts dt { font-family: var(--display); font-weight: 700; font-size: .95rem; margin-bottom: .15rem; }
+  .facts dd { margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.55; }
+
+  /* Sections */
+  section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(1.9rem, 4vw, 2.75rem); letter-spacing: -.025em; line-height: 1.1;
+    margin: 0 0 2.5rem;
+  }
+  .split { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem clamp(2rem, 6vw, 5rem); }
+  .split h2 { margin-bottom: 0; }
+  .prose p { margin: 0 0 1.2rem; max-width: 40rem; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* Projects */
+  .projects { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+  .project {
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: .75rem clamp(1.5rem, 5vw, 4rem);
+    padding: 2rem 0; border-bottom: 1px solid var(--line);
+  }
+  .project h3 {
+    font-family: var(--display); font-weight: 700; font-size: 1.45rem;
+    letter-spacing: -.015em; line-height: 1.2; margin: 0 0 .35rem;
+  }
+  .project .kind { color: var(--muted); font-size: .95rem; margin: 0; }
+  .project p.desc { margin: 0 0 1rem; max-width: 38rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: .45rem; list-style: none; margin: 0; padding: 0; }
+  .tags li {
+    font-family: var(--display); font-weight: 500; font-size: .85rem;
+    padding: .2rem .7rem; border: 1px solid var(--sage); background: #E6F1EA;
+    border-radius: 999px; color: var(--green-dark);
+  }
+  .project .link {
+    display: inline-block; margin-top: 1rem;
+    font-family: var(--display); font-weight: 700; font-size: .98rem;
+    text-decoration: none; border: 1px solid var(--ink); padding: .55rem .9rem; border-radius: 999px; background: var(--ink); color: var(--paper);
+  }
+  .project .link:hover { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+
+  /* Timeline */
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline li {
+    display: grid; grid-template-columns: 11rem 1fr; gap: .5rem 2rem;
+    padding: 1.6rem 0; border-bottom: 1px solid var(--line);
+  }
+  .timeline li:first-child { padding-top: 0; }
+  .timeline time { font-family: var(--display); font-weight: 500; color: var(--green); }
+  .timeline h3 { font-family: var(--display); font-weight: 700; font-size: 1.25rem; margin: 0 0 .2rem; }
+  .timeline .where { margin: 0 0 .6rem; color: var(--muted); }
+  .timeline p.what { margin: 0; max-width: 38rem; }
+
+  /* Stack */
+  .stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem 3rem; }
+  .stack h3 { font-family: var(--display); font-weight: 700; font-size: 1.1rem; margin: 0 0 .75rem; }
+
+  /* Contact */
+  .contact { background: var(--ink); color: var(--paper); border-top: none !important; }
+  .contact h2 { color: var(--paper); margin-bottom: 1.25rem; }
+  .contact p { max-width: 36rem; margin: 0 0 2rem; color: #C9D6CE; }
+  .contact .mail {
+    display: inline-block; font-family: var(--display); font-weight: 800;
+    font-size: clamp(1.4rem, 4.5vw, 2.6rem); letter-spacing: -.02em;
+    color: var(--sage); text-decoration: none; border-bottom: 3px solid var(--sage);
+    word-break: break-word;
+  }
+  .contact .mail:hover { color: #fff; border-color: #fff; }
+  .contact ul { list-style: none; padding: 0; margin: 2.5rem 0 0; display: flex; flex-wrap: wrap; gap: 1.5rem 2rem; }
+  .contact ul a { color: var(--paper); font-family: var(--display); font-weight: 500; }
+  .contact ul a:hover { color: var(--sage); }
+  .contact :focus-visible { outline-color: var(--sage); }
+
+  footer { background: var(--ink); color: #9DB0A5; padding: 0 0 2rem; font-size: .9rem; }
+  footer .wrap { border-top: 1px solid #25382D; padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .portrait { justify-self: start; width: min(78%, 320px); order: -1; margin-right: 1.6rem; }
+    .facts { grid-template-columns: 1fr; }
+    .split, .project, .stack { grid-template-columns: 1fr; }
+    .timeline li { grid-template-columns: 1fr; }
+    nav ul { gap: 1rem; }
+    nav a { font-size: .9rem; }
+  }
+  @media (max-width: 520px) {
+    nav li:nth-child(2) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .portrait .band { animation: none; }
+  }
+</style>
+</head>
+
+<body>
+<!-- Portfolio content and contact details are set for the published site. -->
+<a class="skip" href="#main">Skip to content</a>
+<div class="stripes topstripe" aria-hidden="true"></div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top">Jack Mula</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#journey">Experience</a></li>
+        <li><a href="#stack">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <p class="role">Software developer, Eldoret, Kenya</p>
+        <h1>Jackson Omondi Mula</h1>
+        <p class="lede">I build web and Android software for everyday Kenyan problems: running a garage, taking part in policy, renting a car, finding a matatu fare.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">See my projects</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <div class="band stripes" aria-hidden="true"></div>
+        <img src="jackPortfolio.png" alt="Portrait of Jackson Omondi Mula wearing a black and white striped shirt" width="800" height="1000">
+      </div>
+    </div>
+
+    <div class="wrap">
+      <dl class="facts">
+        <div><dt>Studying</dt><dd>Information Technology, Kabarak University. Third year, graduating December 2027.</dd></div>
+        <div><dt>Working at</dt><dd>County Government of Uasin Gishu, ICT department, on attachment.</dd></div>
+        <div><dt>Building with</dt><dd>React, Next.js, Node.js, Kotlin, PostgreSQL and MySQL.</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap split">
+      <h2>About</h2>
+      <div class="prose">
+        <p>I’m a student at Kabarak University who likes turning a messy real-world process into software people can actually use. I’m comfortable on both sides of an application: React and TypeScript on the front, Node.js, PHP and REST APIs on the back, and Kotlin when the product needs to live on a phone.</p>
+        <p>My recent work includes an Android app for garage management, an AI-assisted portal that makes government policy documents easier for citizens to read, and a car rental platform with an owner dashboard. I’ve also integrated M-Pesa payments through the Daraja API.</p>
+        <p>Outside code, I follow hip-hop, sneakers and the gold market.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Selected projects</h2>
+      <ul class="projects">
+
+        <li class="project">
+          <div>
+            <h3>Makanika</h3>
+            <p class="kind">Android app, in development</p>
+          </div>
+          <div>
+            <p class="desc">A Kotlin app for a multi-tenant garage and vehicle service system. Staff sign in as admin, front desk or mechanic, then open job cards that show a work order’s services and move it through its status workflow.</p>
+            <ul class="tags"><li>Kotlin</li><li>Android</li><li>REST API</li><li>Role-based access</li></ul>
+            <a class="link" href="https://github.com/dev-jack21" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </li>
+
+        <li class="project">
+          <div>
+            <h3>CivicAI (Sauti ya Wananchi)</h3>
+            <p class="kind">Team project, Kabarak University</p>
+          </div>
+          <div>
+            <p class="desc">An accessible public participation portal that helps Kenyans read and respond to government policy documents, using AI to explain them and text-to-speech to make them available to more people.</p>
+            <ul class="tags"><li>Next.js 15</li><li>Supabase</li><li>PostgreSQL RLS</li><li>Gemini 2.0 Flash</li><li>Vercel</li></ul>
+            <a class="link" href="https://github.com/dev-jack21" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </li>
+
+        <li class="project">
+          <div>
+            <h3>Car Rental</h3>
+            <p class="kind">Web app</p>
+          </div>
+          <div>
+            <p class="desc">A car rental site where customers browse cars and manage their bookings, and owners use a separate dashboard to add cars, manage listings and handle booking requests.</p>
+            <ul class="tags"><li>React 19</li><li>Vite</li><li>Tailwind CSS 4</li><li>React Router 7</li></ul>
+            <a class="link" href="https://github.com/dev-jack21" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </li>
+
+        <li class="project">
+          <div>
+            <h3>Project-Mgt</h3>
+            <p class="kind">Full-stack monorepo</p>
+          </div>
+          <div>
+            <p class="desc">A project management app with a React client, Clerk authentication and background jobs, deployed to Vercel.</p>
+            <ul class="tags"><li>React</li><li>Vite</li><li>Clerk</li><li>Inngest</li><li>Vercel</li></ul>
+            <a class="link" href="https://github.com/dev-jack21/Project-Mgt" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </li>
+
+        <li class="project">
+          <div>
+            <h3>MatuTrack</h3>
+            <p class="kind">Design and proposal</p>
+          </div>
+          <div>
+            <p class="desc">A web platform concept for matatu routes and fares, complete with a project proposal, entity relationship diagram, interactive wireframes and a presentation deck.</p>
+            <ul class="tags"><li>System analysis</li><li>ERD</li><li>Wireframing</li></ul>
+            <a class="link" href="https://github.com/dev-jack21" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </li>
+
+        <li class="project">
+          <div>
+            <h3>M-Pesa STK Push integration</h3>
+            <p class="kind">Payments backend</p>
+          </div>
+          <div>
+            <p class="desc">A Node.js and Express service that triggers M-Pesa payment prompts through Safaricom’s Daraja API, built for a campus marketplace concept.</p>
+            <ul class="tags"><li>Node.js</li><li>Express</li><li>Daraja API</li></ul>
+            <a class="link" href="https://github.com/dev-jack21" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="wrap split">
+      <h2>Experience and education</h2>
+      <ol class="timeline">
+        <li>
+          <time>Now</time>
+          <div>
+            <h3>ICT attachee</h3>
+            <p class="where">County Government of Uasin Gishu</p>
+            <p class="what">Software-focused attachment in the ICT department, exploring data and reporting tools for county work.</p>
+          </div>
+        </li>
+        <li>
+          <time>Expected December 2027</time>
+          <div>
+            <h3>Information Technology</h3>
+            <p class="where">Kabarak University</p>
+            <p class="what">Third year. Coursework includes Distributed Systems, Software Engineering, Software Quality Engineering, Advanced Internet Programming, Software Project Management and Management Information Systems.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap split">
+      <h2>Skills</h2>
+      <div class="stack">
+        <div>
+          <h3>Frontend</h3>
+          <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>TypeScript</li><li>React</li><li>Next.js</li><li>Tailwind CSS</li><li>Vite</li></ul>
+        </div>
+        <div>
+          <h3>Backend</h3>
+          <ul class="tags"><li>Node.js</li><li>Express</li><li>PHP</li><li>Java</li><li>REST APIs</li></ul>
+        </div>
+        <div>
+          <h3>Mobile</h3>
+          <ul class="tags"><li>Kotlin</li><li>Android</li><li>Flutter</li><li>Dart</li></ul>
+        </div>
+        <div>
+          <h3>Data</h3>
+          <ul class="tags"><li>MySQL</li><li>PostgreSQL</li><li>Supabase</li></ul>
+        </div>
+        <div>
+          <h3>Tools and services</h3>
+          <ul class="tags"><li>Git and GitHub</li><li>Vercel</li><li>Docker</li><li>Linux</li><li>XAMPP</li></ul>
+        </div>
+        <div>
+          <h3>Integrations</h3>
+          <ul class="tags"><li>M-Pesa Daraja</li><li>Clerk</li><li>Gemini API</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Let’s work together</h2>
+      <p>I’m open to internships, attachments, junior developer roles and freelance projects. Send me a short note about what you’re building.</p>
+      <a class="mail" href="mailto:mulajack165@gmail.com">mulajack165@gmail.com</a>
+      <ul>
+        <li><a href="https://github.com/dev-jack21" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Jackson Omondi Mula</span>
+    <span>Eldoret, Kenya</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
